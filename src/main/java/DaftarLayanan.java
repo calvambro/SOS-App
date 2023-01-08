@@ -26,38 +26,38 @@ public class DaftarLayanan extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        polisi = new javax.swing.JButton();
+        ambulans = new javax.swing.JButton();
+        pemadam = new javax.swing.JButton();
+        basarnas = new javax.swing.JButton();
+        bencana = new javax.swing.JButton();
+        kembali = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Daftar Layanan Darurat");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setText("Polisi");
+        polisi.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        polisi.setText("Polisi");
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setText("Ambulans");
+        ambulans.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ambulans.setText("Ambulans");
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton3.setText("Pemadam Kebakaran");
+        pemadam.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        pemadam.setText("Pemadam Kebakaran");
 
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton4.setText("Basarnas");
+        basarnas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        basarnas.setText("Basarnas");
 
-        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton5.setText("Penanggulangan Bencana");
+        bencana.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bencana.setText("Penanggulangan Bencana");
 
-        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jButton6.setText("Kembali");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        kembali.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        kembali.setText("Kembali");
+        kembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                kembaliActionPerformed(evt);
             }
         });
 
@@ -71,22 +71,22 @@ public class DaftarLayanan extends javax.swing.JFrame {
                 .addGap(183, 183, 183))
             .addGroup(layout.createSequentialGroup()
                 .addGap(63, 63, 63)
-                .addComponent(jButton2)
+                .addComponent(ambulans)
                 .addGap(66, 66, 66)
-                .addComponent(jButton1)
+                .addComponent(polisi)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4)
+                .addComponent(basarnas)
                 .addGap(70, 70, 70))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
-                        .addComponent(jButton3)
+                        .addComponent(pemadam)
                         .addGap(35, 35, 35)
-                        .addComponent(jButton5))
+                        .addComponent(bencana))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton6)))
+                        .addComponent(kembali)))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -96,27 +96,27 @@ public class DaftarLayanan extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1)
-                    .addComponent(jButton4))
+                    .addComponent(ambulans)
+                    .addComponent(polisi)
+                    .addComponent(basarnas))
                 .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton3))
+                    .addComponent(bencana)
+                    .addComponent(pemadam))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(jButton6)
+                .addComponent(kembali)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kembaliActionPerformed
         this.toBack();
         setVisible(false);
         new TombolEmergency().toFront();
         new TombolEmergency().setState(java.awt.Frame.NORMAL);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_kembaliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,12 +154,12 @@ public class DaftarLayanan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton ambulans;
+    private javax.swing.JButton basarnas;
+    private javax.swing.JButton bencana;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton kembali;
+    private javax.swing.JButton pemadam;
+    private javax.swing.JButton polisi;
     // End of variables declaration//GEN-END:variables
 }

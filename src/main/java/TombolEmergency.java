@@ -26,7 +26,7 @@ public class TombolEmergency extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        sosButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -35,13 +35,13 @@ public class TombolEmergency extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Butuh Layanan Darurat?");
 
-        jButton1.setBackground(new java.awt.Color(255, 0, 0));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("SOS");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        sosButton.setBackground(new java.awt.Color(255, 0, 0));
+        sosButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        sosButton.setForeground(new java.awt.Color(255, 255, 255));
+        sosButton.setText("SOS");
+        sosButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                sosButtonActionPerformed(evt);
             }
         });
 
@@ -60,7 +60,7 @@ public class TombolEmergency extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(229, 229, 229)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(sosButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addComponent(jLabel2)))
@@ -72,7 +72,7 @@ public class TombolEmergency extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(jLabel1)
                 .addGap(49, 49, 49)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sosButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(44, 44, 44))
@@ -81,12 +81,12 @@ public class TombolEmergency extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void sosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sosButtonActionPerformed
         this.toBack();
         DaftarLayanan newframe = new DaftarLayanan();
         newframe.setVisible(true);
         newframe.toFront();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_sosButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,8 +124,8 @@ public class TombolEmergency extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton sosButton;
     // End of variables declaration//GEN-END:variables
 }
