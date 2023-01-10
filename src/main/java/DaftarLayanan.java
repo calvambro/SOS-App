@@ -40,18 +40,43 @@ public class DaftarLayanan extends javax.swing.JFrame {
 
         polisi.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         polisi.setText("Polisi");
+        polisi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                polisiActionPerformed(evt);
+            }
+        });
 
         ambulans.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         ambulans.setText("Ambulans");
+        ambulans.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ambulansActionPerformed(evt);
+            }
+        });
 
         pemadam.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         pemadam.setText("Pemadam Kebakaran");
+        pemadam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pemadamActionPerformed(evt);
+            }
+        });
 
         basarnas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         basarnas.setText("Basarnas");
+        basarnas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                basarnasActionPerformed(evt);
+            }
+        });
 
         bencana.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         bencana.setText("Penanggulangan Bencana");
+        bencana.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bencanaActionPerformed(evt);
+            }
+        });
 
         kembali.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         kembali.setText("Kembali");
@@ -117,6 +142,42 @@ public class DaftarLayanan extends javax.swing.JFrame {
         new TombolEmergency().toFront();
         new TombolEmergency().setState(java.awt.Frame.NORMAL);
     }//GEN-LAST:event_kembaliActionPerformed
+
+    private void ambulansActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ambulansActionPerformed
+//        this.toBack();
+        setVisible(false);
+        AmbulancePage ambulanceframe = new AmbulancePage();
+        ambulanceframe.setVisible(true);
+        ambulanceframe.toFront();
+    }//GEN-LAST:event_ambulansActionPerformed
+
+    private void polisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_polisiActionPerformed
+        setVisible(false);
+        PolicePage policePage = new PolicePage();
+        policePage.setVisible(true);
+        policePage.toFront();
+    }//GEN-LAST:event_polisiActionPerformed
+
+    private void basarnasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_basarnasActionPerformed
+        setVisible(false);
+        BasarnasPage basarnasPage = new BasarnasPage();
+        basarnasPage.setVisible(true);
+        basarnasPage.toFront();
+    }//GEN-LAST:event_basarnasActionPerformed
+
+    private void pemadamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pemadamActionPerformed
+        setVisible(false);
+        DamkarPage damkarPage = new DamkarPage();
+        damkarPage.setVisible(true);
+        damkarPage.toFront();
+    }//GEN-LAST:event_pemadamActionPerformed
+
+    private void bencanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bencanaActionPerformed
+        setVisible(false);
+        BnpbPage bnpbPage = new BnpbPage();
+        bnpbPage.setVisible(true);
+        bnpbPage.toFront();
+    }//GEN-LAST:event_bencanaActionPerformed
 
     /**
      * @param args the command line arguments

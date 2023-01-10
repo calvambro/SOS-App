@@ -93,6 +93,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Polisi"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="polisiActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="ambulans">
       <Properties>
@@ -101,6 +104,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Ambulans"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ambulansActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="pemadam">
       <Properties>
@@ -109,6 +115,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Pemadam Kebakaran"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pemadamActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="basarnas">
       <Properties>
@@ -117,6 +126,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Basarnas"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="basarnasActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bencana">
       <Properties>
@@ -125,6 +137,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Penanggulangan Bencana"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bencanaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="kembali">
       <Properties>
