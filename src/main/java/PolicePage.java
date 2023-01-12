@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -8,10 +11,71 @@
  * @author calva
  */
 public class PolicePage extends javax.swing.JFrame {
-
+    public user pengguna;
     /**
      * Creates new form KontakdanLokasi
      */
+    ArrayList<polisi> policeStations = new ArrayList<>();
+    private polisi nearestStation;
+    
+    
+    /**
+     * Creates new form KontakdanLokasi
+     */
+    private void addPoliceStations() {
+        policeStations.add(new polisi("Polsek Astana Anyar", "414141", "Jl. Banteng", 81.54, -101.02));
+        policeStations.add(new polisi("Sabhara Polres Bandung", "424242", "Jl. Merdeka", 95.64, -95.99));
+        policeStations.add(new polisi("Polsek Andir", "434343", "Jl. Andir", 100.25, -112.36));
+        policeStations.add(new polisi("Polda Jawa Barat", "444444", "Jl. Otista", 94.65, -100.47));
+
+    }
+    
+    public PolicePage(user pengguna) {
+        initComponents();
+        this.pengguna = pengguna;
+        addPoliceStations();
+        polisi nearest = getNearest(policeStations);
+        address.setText(nearest.alamat);
+        phone.setText(nearest.phoneNumber);
+        station.setText(nearest.policeStation);
+    }
+    
+    private polisi getNearest(ArrayList<polisi> policeStations) {
+        double nearest = 99999999;
+        double distance = 0;
+        
+        
+        for(polisi x : policeStations) {
+            distance = distance(pengguna.getLatitude(), pengguna.getLongitude(), x.latitude, x.longitude);
+            
+            
+            if (distance < nearest) {
+                nearest = distance;
+                nearestStation = x;
+            }
+        }
+        return nearestStation;
+    }
+    
+    private double distance(double lat1, double lon1, double lat2, double lon2) {
+      double theta = lon1 - lon2;
+      double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
+      dist = Math.acos(dist);
+      dist = rad2deg(dist);
+      dist = dist * 60 * 1.1515;
+      dist = dist * 0.8684;
+      
+      return (dist);
+    }
+    
+    private double deg2rad(double deg) {
+      return (deg * Math.PI / 180.0);
+    }
+    
+    private double rad2deg(double rad) {
+      return (rad * 180.0 / Math.PI);
+    }
+    
     public PolicePage() {
         initComponents();
     }
@@ -27,8 +91,12 @@ public class PolicePage extends javax.swing.JFrame {
 
         title = new javax.swing.JLabel();
         telpLabel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        addressLabel = new javax.swing.JLabel();
+        kembali = new javax.swing.JButton();
+        phone = new javax.swing.JLabel();
+        address = new javax.swing.JLabel();
+        station = new javax.swing.JLabel();
+        addressLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,16 +106,28 @@ public class PolicePage extends javax.swing.JFrame {
         telpLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         telpLabel.setText("No. Telp   : ");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Alamat  :");
+        addressLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        addressLabel.setText("Alamat  :");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jButton1.setText("Kembali");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        kembali.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        kembali.setText("Kembali");
+        kembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                kembaliActionPerformed(evt);
             }
         });
+
+        phone.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        phone.setText("203122321554");
+
+        address.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        address.setText("Dimana aja ini");
+
+        station.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        station.setText("Dimana aja ini");
+
+        addressLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        addressLabel1.setText("Satuan    :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,11 +141,21 @@ public class PolicePage extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(telpLabel)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(addressLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(address))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(telpLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(phone))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(addressLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(station))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1)))
+                        .addComponent(kembali)))
                 .addContainerGap(258, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -73,24 +163,32 @@ public class PolicePage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(title)
-                .addGap(43, 43, 43)
-                .addComponent(telpLabel)
-                .addGap(54, 54, 54)
-                .addComponent(jLabel1)
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addressLabel1)
+                    .addComponent(station))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(telpLabel)
+                    .addComponent(phone))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addressLabel)
+                    .addComponent(address))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(kembali)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kembaliActionPerformed
         this.toBack();
         setVisible(false);
         new DaftarLayanan().toFront();
         new DaftarLayanan().setState(java.awt.Frame.NORMAL);        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_kembaliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,8 +226,12 @@ public class PolicePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel address;
+    private javax.swing.JLabel addressLabel;
+    private javax.swing.JLabel addressLabel1;
+    private javax.swing.JButton kembali;
+    private javax.swing.JLabel phone;
+    private javax.swing.JLabel station;
     private javax.swing.JLabel telpLabel;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables

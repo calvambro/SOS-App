@@ -3,15 +3,77 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.util.ArrayList;
+
 /**
  *
  * @author calva
  */
-public class AmbulancePage extends javax.swing.JFrame {
 
+public class AmbulancePage extends javax.swing.JFrame {
+    public user pengguna;
+    ArrayList<ambulans> hospitals = new ArrayList<>();
+    private ambulans hospitalNearest;
+    
+    
     /**
      * Creates new form KontakdanLokasi
      */
+    private void addHospitals() {
+        hospitals.add(new ambulans("Sentosa Hospital", "1111111", "Jl. Kebon Jati", 92.78, -98.36));
+        hospitals.add(new ambulans("RS. Hasan Sadikin", "121212", "Jl. Sukajadi", 88.64, -102.54));
+        hospitals.add(new ambulans("RS. Immanuel", "131313", "Jl. Kopo", 90.70, -105.25));
+        hospitals.add(new ambulans("RS. Mata Cicendo", "141414", "Jl. Cicendo", 95.65, -95.64));
+
+    }
+    
+    public AmbulancePage(user pengguna) {
+        initComponents();
+        this.pengguna = pengguna;
+        addHospitals();
+        ambulans nearest = getNearest(hospitals);
+        address.setText(nearest.alamat);
+        phone.setText(nearest.phoneNumber);
+        hospitalName.setText(nearest.getName());
+        
+    }
+    
+    private ambulans getNearest(ArrayList<ambulans> hospitals) {
+        double nearest = 99999999;
+        double distance = 0;
+        
+        
+        for(ambulans x : hospitals) {
+            distance = distance(pengguna.getLatitude(), pengguna.getLongitude(), x.latitude, x.longitude);
+            
+            
+            if (distance < nearest) {
+                nearest = distance;
+                hospitalNearest = x;
+            }
+        }
+        return hospitalNearest;
+    }
+    
+    private double distance(double lat1, double lon1, double lat2, double lon2) {
+      double theta = lon1 - lon2;
+      double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
+      dist = Math.acos(dist);
+      dist = rad2deg(dist);
+      dist = dist * 60 * 1.1515;
+      dist = dist * 0.8684;
+      
+      return (dist);
+    }
+    
+    private double deg2rad(double deg) {
+      return (deg * Math.PI / 180.0);
+    }
+    
+    private double rad2deg(double rad) {
+      return (rad * 180.0 / Math.PI);
+    }
+    
     public AmbulancePage() {
         initComponents();
     }
@@ -27,8 +89,12 @@ public class AmbulancePage extends javax.swing.JFrame {
 
         title = new javax.swing.JLabel();
         telpLabel = new javax.swing.JLabel();
+        addressLabel = new javax.swing.JLabel();
+        kembali = new javax.swing.JButton();
+        phone = new javax.swing.JLabel();
+        address = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        hospitalName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,60 +104,90 @@ public class AmbulancePage extends javax.swing.JFrame {
         telpLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         telpLabel.setText("No. Telp   : ");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Alamat  :");
+        addressLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        addressLabel.setText("Alamat  :");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jButton1.setText("Kembali");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        kembali.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        kembali.setText("Kembali");
+        kembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                kembaliActionPerformed(evt);
             }
         });
+
+        phone.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        phone.setText("testestestestestes");
+
+        address.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        address.setText("testestestestestes");
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("Nama RS   :");
+
+        hospitalName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        hospitalName.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 240, Short.MAX_VALUE)
+                .addComponent(title)
+                .addGap(219, 219, 219))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(telpLabel)))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1)))
-                .addContainerGap(433, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(title)
-                .addGap(219, 219, 219))
+                        .addComponent(kembali))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(addressLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(address))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(telpLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(phone))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(hospitalName)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(title)
-                .addGap(42, 42, 42)
-                .addComponent(telpLabel)
-                .addGap(54, 54, 54)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(hospitalName))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(telpLabel)
+                    .addComponent(phone))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addressLabel)
+                    .addComponent(address))
+                .addGap(46, 46, 46)
+                .addComponent(kembali)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kembaliActionPerformed
         this.toBack();
         setVisible(false);
-        new DaftarLayanan().toFront();
-        new DaftarLayanan().setState(java.awt.Frame.NORMAL);        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        new DaftarLayanan(pengguna).toFront();
+        new DaftarLayanan(pengguna).setState(java.awt.Frame.NORMAL);        // TODO add your handling code here:
+    }//GEN-LAST:event_kembaliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,7 +215,6 @@ public class AmbulancePage extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(KontakdanLokasi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -129,8 +224,12 @@ public class AmbulancePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel address;
+    private javax.swing.JLabel addressLabel;
+    private javax.swing.JLabel hospitalName;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton kembali;
+    private javax.swing.JLabel phone;
     private javax.swing.JLabel telpLabel;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables

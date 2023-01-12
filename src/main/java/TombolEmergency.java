@@ -82,8 +82,10 @@ public class TombolEmergency extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void sosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sosButtonActionPerformed
+        user pengguna = new user("Didi", "081234567890", 105.70, -100.25);
+        
         this.toBack();
-        DaftarLayanan newframe = new DaftarLayanan();
+        DaftarLayanan newframe = new DaftarLayanan(pengguna);
         newframe.setVisible(true);
         newframe.toFront();
     }//GEN-LAST:event_sosButtonActionPerformed

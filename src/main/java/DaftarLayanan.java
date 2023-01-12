@@ -8,10 +8,15 @@
  * @author calva
  */
 public class DaftarLayanan extends javax.swing.JFrame {
-
+    public user pengguna;
     /**
      * Creates new form DaftarLayanan
      */
+    public DaftarLayanan(user pengguna) {
+        initComponents();
+        this.pengguna = pengguna;
+    }
+    
     public DaftarLayanan() {
         initComponents();
     }
@@ -146,35 +151,35 @@ public class DaftarLayanan extends javax.swing.JFrame {
     private void ambulansActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ambulansActionPerformed
 //        this.toBack();
         setVisible(false);
-        AmbulancePage ambulanceframe = new AmbulancePage();
+        AmbulancePage ambulanceframe = new AmbulancePage(pengguna);
         ambulanceframe.setVisible(true);
         ambulanceframe.toFront();
     }//GEN-LAST:event_ambulansActionPerformed
 
     private void polisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_polisiActionPerformed
         setVisible(false);
-        PolicePage policePage = new PolicePage();
+        PolicePage policePage = new PolicePage(pengguna);
         policePage.setVisible(true);
         policePage.toFront();
     }//GEN-LAST:event_polisiActionPerformed
 
     private void basarnasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_basarnasActionPerformed
         setVisible(false);
-        BasarnasPage basarnasPage = new BasarnasPage();
+        BasarnasPage basarnasPage = new BasarnasPage(pengguna);
         basarnasPage.setVisible(true);
         basarnasPage.toFront();
     }//GEN-LAST:event_basarnasActionPerformed
 
     private void pemadamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pemadamActionPerformed
         setVisible(false);
-        DamkarPage damkarPage = new DamkarPage();
+        DamkarPage damkarPage = new DamkarPage(pengguna);
         damkarPage.setVisible(true);
         damkarPage.toFront();
     }//GEN-LAST:event_pemadamActionPerformed
 
     private void bencanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bencanaActionPerformed
         setVisible(false);
-        BnpbPage bnpbPage = new BnpbPage();
+        BnpbPage bnpbPage = new BnpbPage(pengguna);
         bnpbPage.setVisible(true);
         bnpbPage.toFront();
     }//GEN-LAST:event_bencanaActionPerformed

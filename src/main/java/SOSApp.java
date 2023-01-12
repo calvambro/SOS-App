@@ -1,4 +1,4 @@
-package com.mycompany.sosapp;
+
 
 /**
  *
@@ -7,6 +7,6 @@ package com.mycompany.sosapp;
 public class SOSApp {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+         System.out.println("hahihu");
     }
 }

@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -8,10 +11,68 @@
  * @author calva
  */
 public class BnpbPage extends javax.swing.JFrame {
-
+    public user pengguna;
+    ArrayList<bnpb> bnpbUnits = new ArrayList<>();
+    private bnpb unitNearest;
+    
+    
     /**
      * Creates new form KontakdanLokasi
      */
+    private void addBnpbUnit() {
+        bnpbUnits.add(new bnpb("Kab. Bandung Barat", "313131", "Jl. Sakura", 37.24, -120.64));
+        bnpbUnits.add(new bnpb("Prov. Jawa Tengah", "323232", "Jl. Sultan Hasanuddin", 94.87, -84.04));
+        bnpbUnits.add(new bnpb("Kab. Bogor", "333333", "Jl. Anggrek", 102.84, -107.65));
+        bnpbUnits.add(new bnpb("Nasional", "343434", "Jl. Jend. Sudirman", 110.57, -92.68));
+
+    }
+    
+    public BnpbPage(user pengguna) {
+        initComponents();
+        this.pengguna = pengguna;
+        addBnpbUnit();
+        bnpb nearest = getNearest(bnpbUnits);
+        address.setText(nearest.alamat);
+        phone.setText(nearest.phoneNumber);
+        unit.setText(nearest.unit);
+    }
+    
+    private bnpb getNearest(ArrayList<bnpb> basarnasUnits) {
+        double nearest = 99999999;
+        double distance = 0;
+        
+        
+        for(bnpb x : bnpbUnits) {
+            distance = distance(pengguna.getLatitude(), pengguna.getLongitude(), x.latitude, x.longitude);
+            
+            
+            if (distance < nearest) {
+                nearest = distance;
+                unitNearest = x;
+            }
+        }
+        return unitNearest;
+    }
+    
+    private double distance(double lat1, double lon1, double lat2, double lon2) {
+      double theta = lon1 - lon2;
+      double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
+      dist = Math.acos(dist);
+      dist = rad2deg(dist);
+      dist = dist * 60 * 1.1515;
+      dist = dist * 0.8684;
+      
+      return (dist);
+    }
+    
+    private double deg2rad(double deg) {
+      return (deg * Math.PI / 180.0);
+    }
+    
+    private double rad2deg(double rad) {
+      return (rad * 180.0 / Math.PI);
+    }
+    
     public BnpbPage() {
         initComponents();
     }
@@ -27,8 +88,12 @@ public class BnpbPage extends javax.swing.JFrame {
 
         title = new javax.swing.JLabel();
         telpLabel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        addressLabel = new javax.swing.JLabel();
+        kembali = new javax.swing.JButton();
+        phone = new javax.swing.JLabel();
+        address = new javax.swing.JLabel();
+        addressLabel1 = new javax.swing.JLabel();
+        unit = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,16 +103,28 @@ public class BnpbPage extends javax.swing.JFrame {
         telpLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         telpLabel.setText("No. Telp   : ");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Alamat  :");
+        addressLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        addressLabel.setText("Alamat  :");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jButton1.setText("Kembali");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        kembali.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        kembali.setText("Kembali");
+        kembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                kembaliActionPerformed(evt);
             }
         });
+
+        phone.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        phone.setText("01010101");
+
+        address.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        address.setText("AKSAKjsA");
+
+        addressLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        addressLabel1.setText("Unit  :");
+
+        unit.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        unit.setText("AKSAKjsA");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -58,12 +135,22 @@ public class BnpbPage extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(telpLabel)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(addressLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(address))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(telpLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(phone))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(addressLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(unit))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1)))
-                .addContainerGap(433, Short.MAX_VALUE))
+                        .addComponent(kembali)))
+                .addContainerGap(347, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(title)
@@ -74,24 +161,32 @@ public class BnpbPage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(title)
-                .addGap(39, 39, 39)
-                .addComponent(telpLabel)
-                .addGap(54, 54, 54)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addressLabel1)
+                    .addComponent(unit))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(telpLabel)
+                    .addComponent(phone))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addressLabel)
+                    .addComponent(address))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addComponent(kembali)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kembaliActionPerformed
         this.toBack();
         setVisible(false);
         new DaftarLayanan().toFront();
         new DaftarLayanan().setState(java.awt.Frame.NORMAL);        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_kembaliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,9 +224,13 @@ public class BnpbPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel address;
+    private javax.swing.JLabel addressLabel;
+    private javax.swing.JLabel addressLabel1;
+    private javax.swing.JButton kembali;
+    private javax.swing.JLabel phone;
     private javax.swing.JLabel telpLabel;
     private javax.swing.JLabel title;
+    private javax.swing.JLabel unit;
     // End of variables declaration//GEN-END:variables
 }
