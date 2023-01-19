@@ -232,5 +232,5 @@ public class AmbulancePage extends javax.swing.JFrame {
     private javax.swing.JLabel phone;
     private javax.swing.JLabel telpLabel;
     private javax.swing.JLabel title;
-    // End of variables declaration//GEN-END:variables
+    // end of variables declaration//GEN-END:variables
 }
