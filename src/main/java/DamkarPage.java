@@ -235,5 +235,5 @@ public class DamkarPage extends javax.swing.JFrame {
     private javax.swing.JLabel telpLabel;
     private javax.swing.JLabel title;
     private javax.swing.JLabel unit;
-    // End of variables declaration//GEN-END:variables
+    // end of variables declaration//GEN-END:variables
 }
