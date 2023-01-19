@@ -189,7 +189,7 @@ public class BasarnasPage extends javax.swing.JFrame {
         new DaftarLayanan().toFront();
         new DaftarLayanan().setState(java.awt.Frame.NORMAL);        // TODO add your handling code here:
     }//GEN-LAST:event_kembaliActionPerformed
-
+//  crucial here
     /**
      * @param args the command line arguments
      */
