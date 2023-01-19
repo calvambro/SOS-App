@@ -227,5 +227,5 @@ public class DaftarLayanan extends javax.swing.JFrame {
     private javax.swing.JButton kembali;
     private javax.swing.JButton pemadam;
     private javax.swing.JButton polisi;
-    // End of variables declaration//GEN-END:variables
+    // end of variables declaration//GEN-END:variables
 }
