@@ -4,7 +4,7 @@ to make this application, we use the Java Swing library with the help of netbean
 <br>
 <br>
 
-<h2>Teams Member</h2>
+<h2>Team Members</h2>
 Ambrosius Calvin (https://github.com/calvambro)<br>
 Jerrard Joevin (https://github.com/jerrard-bot)<br>
 Jerry Junior Kurniawan (https://github.com/Jerry1711)<br>
