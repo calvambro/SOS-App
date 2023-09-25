@@ -6,7 +6,7 @@ to make this application, we use the Java Swing library with the help of netbean
 
 <h2>Team Members</h2>
 Ambrosius Calvin (https://github.com/calvambro)<br>
-Jerrard Joevin (https://github.com/jerrard-bot)<br>
+Jerrard Joevin (https://github.com/JerrardJ)<br>
 Jerry Junior Kurniawan (https://github.com/Jerry1711)<br>
 Maulana Ahmad Sulami (https://github.com/MaulanaAhmadSulami)<br>
 Steve Robert Nelwan (https://github.com/SteveRN890)<br>
